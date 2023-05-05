@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MdFilterListAlt, MdOutlineSearch } from "react-icons/md";
 
 const Search = () => {
-  const [filterOpen, setFilterOpen] = useState(true);
+  const [filterOpen, setFilterOpen] = useState(false);
   const [filterBy, setFilterBy] = useState(null);
 
   const filterOptions = [
@@ -17,7 +17,7 @@ const Search = () => {
   ];
 
   return (
-    <div className="absolute right-0 bottom-0 w-4/5 h-5/6">
+    <div className="absolute right-0 bottom-0 w-4/5 h-5/6 font-inter">
       <div className="flex w-3/5 gap-8 mx-auto">
         <button
           className="flex items-center gap-1 border border-custom-blue-main py-1 px-2 rounded-md relative"
@@ -31,12 +31,18 @@ const Search = () => {
             }`}
           >
             {filterOptions.map((option) => (
-              <div className="flex items-center gap-3 p-3">
-                <button
-                  key={option.value}
-                  className="flex items-center justify-center h-1/3 aspect-square rounded-full px-2 border border-black p-1 overflow-hidden"
-                  onClick={() => setFilterBy(option.label)}
-                ><span className={`h-full aspect-square rounded-full ${filterBy === option.label ? 'bg-custom-blue-main' : ''}`}></span></button>
+              <div
+                className="flex items-center gap-3 p-3"
+                onClick={() => setFilterBy(option.label)}
+                key={option.value}
+              >
+                <div className="flex items-center justify-center h-1/3 aspect-square rounded-full px-2 border border-black p-1 overflow-hidden">
+                  <span
+                    className={`h-full aspect-square rounded-full ${
+                      filterBy === option.label ? "bg-custom-blue-main" : ""
+                    }`}
+                  ></span>
+                </div>
                 {option.label}
               </div>
             ))}
