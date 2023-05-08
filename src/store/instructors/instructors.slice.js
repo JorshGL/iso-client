@@ -1,21 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const authSlice = createSlice({
-  name: "auth",
+export const instructorsSlice = createSlice({
+  name: "instructors",
   initialState: () => {
-    const user = JSON.parse(localStorage.getItem("user"));
     return {
-      user,
+      instructors: [],
       loading: false,
       error: null,
     };
   },
   reducers: {
-    setUser: (state, action) => {
+    setInstructors: (state, action) => {
       state.error = null;
       state.loading = false;
-      localStorage.setItem("user", JSON.stringify(action.payload));
-      state.user = action.payload;
+      state.instructors = action.payload;
     },
     setError: (state, action) => {
       state.loading = false;
@@ -27,4 +25,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setUser, setError, setLoading } = authSlice.actions;
+
+export const { setInstructors, setError, setLoading } = instructorsSlice.actions;

@@ -15,7 +15,7 @@ const TopBar = ({ backButtonEnabled }) => {
       )}
 
       <div className='h-5/6 aspect-square overflow-hidden rounded-full'>
-        <img src={user.picture} alt="" />
+        <img src={user.pictureRef} alt="" />
       </div>
 
       <div className='font-poppins font-medium text-sm text-neutral-500'>{user.name}</div>

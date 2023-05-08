@@ -1,24 +1,31 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { setUser } from "./auth.slice";
+import { setError, setLoading, setUser } from "./auth.slice";
+import { api } from "../../api/api";
+import { object, string } from "yup";
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (payload, { dispatch }) => {
-    dispatch(setUser({
-      name: "John Doe",
-      email: "example@uao.edu.co",
-      career: "Ingeniería informática",
-      faculty: "Ingeniería",
-      semester: 5,
-      picture: "https://picsum.photos/200",
-      role: {
-        name: "student",
-        permissions: {
-          canEditOwnProfile: true,
-          canViewOwnCalendar: true,
-          canEditSubjects: false,
-        }
-      }
-    }));
+  async ({ email, password }, { dispatch }) => {
+    try {
+      dispatch(setError(null));
+      const credentialsSchema = object({
+        email: string().email().required(),
+        password: string().required(),
+      });
+
+      await credentialsSchema.validate({ email, password });
+
+      dispatch(setLoading(true));
+      const { data: response } = await api.post("/auth/login", {
+        email,
+        password,
+      });
+      if (!response.success) throw new Error(response.message);
+
+      localStorage.setItem("jwt", response.data.token);
+      dispatch(setUser(response.data.user));
+    } catch (error) {
+      dispatch(setError(error.message));
+    }
   }
-)
+);

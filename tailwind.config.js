@@ -8,6 +8,9 @@ export default {
           blue: {
             main: "#005395",
             soft: "#256CA5",
+          },
+          yellow: {
+            main: "#F8D464"
           }
         },
       },
