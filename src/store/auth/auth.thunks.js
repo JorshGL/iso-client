@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setError, setLoading, setUser } from "./auth.slice";
 import { api } from "../../api/api";
 import { object, string } from "yup";
+import { toast } from "react-toastify";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -24,6 +25,7 @@ export const login = createAsyncThunk(
 
       localStorage.setItem("jwt", response.data.token);
       dispatch(setUser(response.data.user));
+      toast.success('Bienvenido')
     } catch (error) {
       dispatch(setError(error.message));
     }

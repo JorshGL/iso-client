@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { SlOptionsVertical } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
 
 const InstructorsTable = () => {
   const { instructors, loading } = useSelector((state) => state.instructors);
+
+  const navigate = useNavigate();
 
   const dayOfWeek = new Date().getDay();
 
@@ -22,7 +25,8 @@ const InstructorsTable = () => {
         {instructors &&
           instructors.map((instructor) => (
             <tr
-              className="uppercase text-xs border-b border-neutral-400 text-center h-16 overflow-hidden"
+              className="uppercase text-xs border-b border-neutral-400 text-center h-16 overflow-hidden cursor-pointer hover:bg-neutral-200 transition-all"
+              onClick={() => navigate(`/monitoria/${instructor.id}`)}
               key={instructor.id}
             >
               <td>{instructor.name}</td>

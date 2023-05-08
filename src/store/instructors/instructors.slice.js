@@ -7,6 +7,7 @@ export const instructorsSlice = createSlice({
       instructors: [],
       loading: false,
       error: null,
+      instructor: null
     };
   },
   reducers: {
@@ -22,8 +23,13 @@ export const instructorsSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
+    setInstructor: (state, action) => {
+      state.error = null;
+      state.loading = false;
+      state.instructor = action.payload;
+    }
   },
 });
 
 
-export const { setInstructors, setError, setLoading } = instructorsSlice.actions;
+export const { setInstructors, setError, setLoading, setInstructor } = instructorsSlice.actions;

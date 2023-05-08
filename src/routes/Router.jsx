@@ -5,17 +5,20 @@ import Home from "../screens/Home";
 import Login from "../screens/Login";
 import { ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Layout from "../components/Layout";
+import Instructor from "../screens/Instructor";
+
 
 const Router = () => {
   const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
 
   return (
     <>
       <Routes>
         {user ? (
           <>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Layout element={<Home />} />} />
+            <Route path="/monitoria/:userId" element={<Layout element={<Instructor />} />} />
           </>
         ) : (
           <>

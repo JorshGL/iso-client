@@ -5,13 +5,15 @@ import {
   MdNotifications,
   MdCancel
 } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 const TopBar = ({ backButtonEnabled }) => {
+  const navigate = useNavigate();
   const { user } = useSelector(state => state.auth);
   return (
     <div className='flex items-center justify-end py-5 px-8 w-4/5 h-1/6 max-h-20 absolute top-0 right-0 shadow-sm shadow-neutral-400 gap-8'>
       {backButtonEnabled && (
-        <MdArrowBackIosNew className='cursor-pointer mr-auto' />
+        <MdArrowBackIosNew className='cursor-pointer mr-auto' onClick={() => navigate(-1)} />
       )}
 
       <div className='h-5/6 aspect-square overflow-hidden rounded-full'>
