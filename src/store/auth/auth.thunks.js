@@ -10,8 +10,10 @@ export const login = createAsyncThunk(
     try {
       dispatch(setError(null));
       const credentialsSchema = object({
-        email: string().email().required(),
-        password: string().required(),
+        email: string()
+          .email("Por favor, ingrese un email válido.")
+          .required("Por favor, complete todos los campos"),
+        password: string().required("Por favor, complete todos los campos"),
       });
 
       await credentialsSchema.validate({ email, password });
@@ -21,13 +23,15 @@ export const login = createAsyncThunk(
         email,
         password,
       });
-      if (!response.success) throw new Error(response.message);
+      console.log(response);
+      if (!response.success)
+        throw new Error(response.message);
 
       localStorage.setItem("jwt", response.data.token);
       dispatch(setUser(response.data.user));
-      toast.success('Bienvenido')
+      toast.success("Bienvenido");
     } catch (error) {
-      dispatch(setError(error.message));
+      dispatch(setError('Usuario o contraseña incorrectos'));
     }
   }
 );

@@ -7,9 +7,9 @@ import {
 } from "react-icons/md";
 import { useSelector } from "react-redux";
 import Select from "react-select";
-import { setLoading } from "../../../store/instructors/instructors.slice";
 import { api } from "../../../api/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const MONT_NAMES = [
   "Enero",
@@ -27,6 +27,7 @@ const MONT_NAMES = [
 
 const Modal = ({ setOpenModal, event, courses, instructorId }) => {
   const { id: studentId } = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
 
   const [selectedModality, setSelectedModality] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -54,6 +55,7 @@ const Modal = ({ setOpenModal, event, courses, instructorId }) => {
     if (response.success) toast.success("Monitoria creada con éxito");
     else toast.error("Error al crear la monitoria");
     setOpenModal(false);
+    navigate("/calendar");
   };
 
   return (
@@ -70,7 +72,7 @@ const Modal = ({ setOpenModal, event, courses, instructorId }) => {
               MONT_NAMES[moment(event.startAt).month()]
             } ${moment(event.startAt).format("DD, YYYY")}`}</div>
 
-            <div className="flex text-2xl gap-3">
+            <div className="flex text-2xl gap-3 items-center">
               <div
                 className={`p-2 border border-neutral-400 rounded-lg cursor-pointer ${
                   selectedModality === "remota" ? "bg-neutral-300" : "bg-white"
@@ -79,6 +81,7 @@ const Modal = ({ setOpenModal, event, courses, instructorId }) => {
               >
                 <MdOutlineLaptopMac />
               </div>
+              <div className="text-xs w-1/3 text-center">Seleccionar modalidad</div>
               <div
                 className={`p-2 border border-neutral-400 rounded-lg cursor-pointer ${
                   selectedModality === "presencial"
