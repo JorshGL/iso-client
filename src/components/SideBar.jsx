@@ -7,7 +7,7 @@ const SideBar = () => {
   const { permissions } = user.role;
 
   return (
-    <div className="flex flex-col w-1/5 h-full bg-custom-blue-main items-center justify-center text-white absolute top-0 left-0">
+    <div className="flex flex-col w-1/5 h-full bg-custom-blue-main items-center justify-center text-white absolute top-0 left-0 text-sm">
       <div className="flex items-center justify-center w-3/5 aspect-square overflow-hidden rounded-full">
         <img src={user.pictureRef} alt="" />
       </div>
