@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { MdEdit, MdOutlineCalendarMonth, MdOutlineBook } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const SideBar = () => {
   const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const { permissions } = user.role;
 
   return (
@@ -26,7 +28,10 @@ const SideBar = () => {
           </button>
         )}
         {permissions.canViewOwnCalendar && (
-          <button className="flex items-center gap-3 py-2 px-3 rounded-lg bg-custom-blue-soft w-full">
+          <button
+            className="flex items-center gap-3 py-2 px-3 rounded-lg bg-custom-blue-soft w-full"
+            onClick={() => navigate("/calendar")}
+          >
             <MdOutlineCalendarMonth className="text-3xl" />
             Ver calendario
           </button>
