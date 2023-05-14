@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Kalend, { CalendarView } from "kalend";
 import { api } from "../../api/api";
+import { useSelector } from "react-redux";
 
 const Calendar = () => {
   const [events, setEvents] = useState([]);
+  const { user } = useSelector((state) => state.auth);
 
   const getEvents = async () => {
-    const { data: response } = await api.get("/monitorias/findAllByStudentId");
+    const { data: response } = await api.get(`/monitorias/findAllByStudentId/${user.id}`);
     setEvents(
       response.data.map((evt) => ({
         id: evt.id,
