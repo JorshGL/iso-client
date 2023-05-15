@@ -6,6 +6,8 @@ import {
   MdOutlineCheckBoxOutlineBlank,
 } from "react-icons/md";
 import { toast } from "react-toastify";
+import logoCea from "../../assets/cea.png"
+import photoUao from "../../assets/uao.jpg"
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ const Login = () => {
         <div className="flex items-center justify-center h-1/3 overflow-hidden">
           <img
             className="w-2/3"
-            src="https://s3-alpha-sig.figma.com/img/c066/3351/0812b4428a09b6f351717aba45f09137?Expires=1684108800&Signature=fMC0JEJm5lpUBT2TY-A8ap9f2G8Z3jcOHb-B~d0rrA0n0XJurerCyUlY4vratYTli9etO40aWwNpM1CSRTDdNrdtErnefj2Br5JzOIpR6-pGKX6mTKSD-ffJRaLqDkd~oT3foIeI0PP9Gd~tQuO2-oxz~JhRU-Nf2BNk73sboU73Hebs2~sBnh6Gar6OG8~rshfN2W~LX4eVxvDGGFMcqjDE5E4C6wT9RQ6g33xjyYnZlIdwj7yR1pS2KVBD1TL-FV4yayinH61bY2nKpCyHcnSzlAcU0uxxAQvb~yZo8iJ1b5hLaHgeQEMNV8S7OoBQm2xF4439-e0heJ0akphVtg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+            src={logoCea}
             alt=""
           />
         </div>
@@ -122,7 +124,7 @@ const Login = () => {
       <div className="w-1/2 overflow-hidden flex items-end">
         <img
           className="w-full"
-          src="https://s3-alpha-sig.figma.com/img/67c8/c26f/da677b0cf7c947440a40b516f7b4e9ae?Expires=1684108800&Signature=PQNJcrPZ2d3k7lCpEaSTub7sKD0k8sdiuUhdfiq754nmyYzmq7fnR3haros2Vnv1JajMGUisT8YHJvTJ~i~lIlNoxSpVAIZO-i1qDGETQwyvuZIzMhLvi-O3ItHaBN~YBRMdIWWJgR5e3vExxjRcVFU2muN9LZ2UaPuWLJ1zy1YZy~lQ~auiCfUuAchI8kw7mxB9BX2iarCJQYcLNwja5bXs3G692N4QyfZt1RHbKpnVf99o0LCxnnpiPGChna~n2RvHKSUJjBX0F01K-eshEkZtuVSlEUD2yct0lzICL2lPVJB-VHuFJzhgfftHTSghyC4Otm-n7-03bsM6Vsk-wA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          src={photoUao}
           alt=""
         />
       </div>
